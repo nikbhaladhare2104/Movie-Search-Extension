@@ -1,15 +1,19 @@
 
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from './store';
+import { setMovieDetails } from './store/movieSlice';
+
 
 function App() {
-  const [movieDetails, setMovieDetails] = useState<any>(null);
-
+const dispatch = useDispatch();
+  const movieDetails = useSelector((state: RootState) => state.movie.details);
    useEffect(() => {
     chrome.storage.local.get(null, (items) => {
       const latestMovie = Object.values(items)[0];
-      setMovieDetails(latestMovie);
+      dispatch(setMovieDetails(latestMovie));
     });
-  }, []);
+  }, [dispatch]);
 
    if (!movieDetails) {
     return <div>Loading...</div>;
