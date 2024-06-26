@@ -6,3 +6,4 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
     chrome.storage.local.set({ [message.title]: movieDetails });
   }
 });
+
