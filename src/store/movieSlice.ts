@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface MovieState {
+type MovieState =  {
   details: any;
   history: any[];
 }
