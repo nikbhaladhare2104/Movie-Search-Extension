@@ -10,5 +10,8 @@ export const fetchMovieDetails = async (title: string) => {
       query: title,
     },
   });
+
+ 
+  // console.log(response.data.results[0])
   return response.data.results[0];
 };
