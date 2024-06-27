@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+# Movie Search Chrome Extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
+This Chrome extension enhances the Google search experience for movie queries by fetching detailed information from the TMDB API and displaying it in a popup. It also maintains a searchable and persistent history of all movie queries made through the extension.
 
-Currently, two official plugins are available:
+## Features
+- Detects Google searches for movies.
+- Fetches movie details from the TMDB API.
+- Displays movie details in a user-friendly popup.
+- Maintains and displays a search history of movie queries.
+- State management with Redux.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## Expanding the ESLint configuration
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/movie-search-extension.git
+   cd movie-search-extension
+   ```
+2. Install dependencies:
+  ```bash
+  npm install
+  ```
+3. Build the extension:
+  ```bash
+  npm run build
+  ```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+4. Load the extension in Chrome:
+  * Open Chrome and go to chrome://extensions/.
+  * Enable "Developer mode" by toggling the switch in the top right corner.
+  * Click "Load unpacked" and select the dist directory from the project.
 
-- Configure the top-level `parserOptions` property like this:
+##Usage
+  * Perform a Google search for a movie (e.g., "Inception movie").
+  * Click on the extension icon in the Chrome toolbar to view the movie details and search history.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+    
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
