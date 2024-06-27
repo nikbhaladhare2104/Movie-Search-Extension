@@ -14,8 +14,8 @@ This Chrome extension enhances the Google search experience for movie queries by
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/movie-search-extension.git
-   cd movie-search-extension
+   git clone https://github.com/nikbhaladhare2104/Movie-Search-Extension.git
+   cd Movie-Search-Extension
    ```
 2. Install dependencies:
   ```bash
