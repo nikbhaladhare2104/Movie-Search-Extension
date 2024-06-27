@@ -1,4 +1,7 @@
 import { fetchMovieDetails } from './services/tmdbService';
+import { setMovieDetails } from "./store/movieSlice";
+import { useDispatch } from "react-redux";
+
 // import { setMovieDetails } from './movieSlice'; // Import the action creator
 
 // Define message and movie details types
@@ -16,10 +19,14 @@ export interface MovieDetails {
 }
 
 chrome.runtime.onMessage.addListener(async (message: Message) => {
+  const dispatch = useDispatch();
+
+
   if (message.type === 'MOVIE_QUERY' && message.title) {
     const movieDetails: MovieDetails | null = await fetchMovieDetails(message.title);
     if (!movieDetails) {
-      chrome.runtime.sendMessage({ type: 'NO_RESULTS' });
+      dispatch(setMovieDetails({} as MovieDetails));
+      // chrome.runtime.sendMessage({ type: 'NO_RESULTS' });
       return;
     }
 
@@ -41,32 +48,21 @@ chrome.runtime.onMessage.addListener(async (message: Message) => {
       // })
     })
 
+    // chrome.storage.local.get('movieSearches', (result) => {
+    //   const movieSearches: string[] = result.movieSearches || [];
+    //   const updatedSearches = [message.title, ...movieSearches.filter((title: string) => title !== message.title)];
+
+    //   chrome.storage.local.set({ 
+    //     movieSearches: updatedSearches,
+    //     // [message.title as string]: movieDetails 
+    //   }, () => {
+    //     // console.log(`Movie search for "${message.title}" has been stored.`);
+    //   });
+    //   // chrome.storage.local.get('movieSearches', (result) => {
+    //   //   console.log(result['movieSearches']);
+    //   // })
 
 
-    chrome.storage.local.get('movieSearches', (result) => {
-      const movieSearches: string[] = result.movieSearches || [];
-      const updatedSearches = [message.title, ...movieSearches.filter((title: string) => title !== message.title)];
-
-      chrome.storage.local.set({ 
-        movieSearches: updatedSearches,
-        // [message.title as string]: movieDetails 
-      }, () => {
-        // console.log(`Movie search for "${message.title}" has been stored.`);
-      });
-      // chrome.storage.local.get('movieSearches', (result) => {
-      //   console.log(result['movieSearches']);
-      // })
-
-
-      // Sort movie details in local storage by the order of movieSearches
-      // const sortedMovieDetails: { [key: string]: MovieDetails } = {};
-      // updatedSearches.forEach((title) => {
-      //   sortedMovieDetails[title as string] = result[title as string];
-      // });
-
-      // chrome.storage.local.set(sortedMovieDetails, () => {
-      //   console.log('Movie details sorted and stored in local storage.');
-      // });
-    });
+    // });
   }
 });

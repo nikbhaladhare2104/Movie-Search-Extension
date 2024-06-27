@@ -4,6 +4,9 @@ function parseGoogleSearch() {
     const title = query.replace('movie', '').trim();
     chrome.runtime.sendMessage({ type: 'MOVIE_QUERY', title });
   }
-}
+  else if (query && query.toLowerCase()){
+    chrome.runtime.sendMessage({ type: 'MOVIE_QUERY', title: query });
+  }
+} 
 
 parseGoogleSearch();
