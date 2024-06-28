@@ -1,6 +1,6 @@
 import { fetchMovieDetails } from './services/tmdbService';
-import { setMovieDetails } from "./store/movieSlice";
-import { useDispatch } from "react-redux";
+// import { setMovieDetails } from "./store/movieSlice";
+// import { useDispatch } from "react-redux";
 
 // import { setMovieDetails } from './movieSlice'; // Import the action creator
 
@@ -19,13 +19,13 @@ export interface MovieDetails {
 }
 
 chrome.runtime.onMessage.addListener(async (message: Message) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
 
   if (message.type === 'MOVIE_QUERY' && message.title) {
     const movieDetails: MovieDetails | null = await fetchMovieDetails(message.title);
     if (!movieDetails) {
-      dispatch(setMovieDetails({} as MovieDetails));
+      // dispatch(setMovieDetails({} as MovieDetails));
       // chrome.runtime.sendMessage({ type: 'NO_RESULTS' });
       return;
     }
