@@ -21,12 +21,18 @@ This Chrome extension enhances the Google search experience for movie queries by
   ```bash
   npm install
   ```
-3. Build the extension:
+
+3. Getting the TMDB API
+   * Need the TMDB API and store that API_KEY in .env file in the root directory (It is free to get the API_KEY)
+  
+     
+4. Build the extension:
   ```bash
   npm run build
   ```
 
-4. Load the extension in Chrome:
+     
+5. Load the extension in Chrome:
   * Open Chrome and go to chrome://extensions/.
   * Enable "Developer mode" by toggling the switch in the top right corner.
   * Click "Load unpacked" and select the dist directory from the project.
